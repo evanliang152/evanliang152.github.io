@@ -1,4 +1,331 @@
-d-img-top" alt="Marie Curie">
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Through Time - Historical Timeline</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        :root {
+            --timeline-line-color: var(--bs-info);
+            --navbar-height: 56px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: var(--navbar-height);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            padding-top: calc(var(--navbar-height) + 4rem);
+            padding-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1578402382615-8c856f41452e');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .hero-section .container {
+            width: 100%;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--timeline-line-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            margin: 2rem 0;
+            width: 50%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 30px;
+            padding-right: 0;
+            margin-left: 50%;
+        }
+
+        .timeline-img {
+            width: 100%;
+            max-width: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-img:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .timeline-content {
+            background: var(--bs-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Artifact Cards */
+        .artifact-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .artifact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .artifact-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Section Styles */
+        section {
+            scroll-margin-top: var(--navbar-height);
+        }
+
+        #events .card, 
+        #civilizations .card,
+        #about .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #events .card:hover, 
+        #civilizations .card:hover,
+        #about .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #maps .card {
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        #maps .card:hover {
+            transform: scale(1.02);
+        }
+
+        #maps .card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        #maps .card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 30px;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+
+            #civilizations .img-fluid {
+                height: 150px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-book-open me-2"></i>Congress</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#timeline">Timeline</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#artifacts">Artifacts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#figures">Historical Figures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#civilizations">Civilizations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#maps">Historical Maps</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 mb-4"><br><br>Political Systems and Structures</h1>
+                    <p class="lead">Analyzing the Senate and House of Representatives, powers of Conjgress, media's role in the Democratic Processes, and the checks and balances of the United States government</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Historical Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-img">
+                        <img src="https://images.unsplash.com/photo-1508997449629-303059a039c0" alt="Historical Event 1" class="img-fluid rounded">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>World War II</h3>
+                        <p>1939-1945: A global conflict that reshaped the modern world.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-img">
+                        <img src="https://images.unsplash.com/photo-1599557792070-947e60b8044b" alt="Historical Event 2" class="img-fluid rounded">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Industrial Revolution</h3>
+                        <p>1760-1840: The transformation of manufacturing processes.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-img">
+                        <img src="https://images.unsplash.com/photo-1578593139775-971441c3c518" alt="Historical Event 3" class="img-fluid rounded">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Renaissance Period</h3>
+                        <p>14th-17th centuries: A period of cultural rebirth in Europe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artifacts Gallery -->
+    <section id="artifacts" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">Historical Artifacts</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://images.unsplash.com/photo-1695555669529-09552d67aca4" class="card-img-top" alt="Artifact 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Ancient Pottery</h5>
+                            <p class="card-text">Discovered in Mediterranean excavations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://images.unsplash.com/photo-1560698421-8b6a7d0d89dc" class="card-img-top" alt="Artifact 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Medieval Manuscripts</h5>
+                            <p class="card-text">Preserved texts from the Middle Ages.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://images.unsplash.com/photo-1663681240426-9d8a04037005" class="card-img-top" alt="Artifact 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Ancient Coins</h5>
+                            <p class="card-text">Currency from various civilizations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Major Historical Events</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">The Fall of the Berlin Wall</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">November 9, 1989</h6>
+                            <p class="card-text">A pivotal event symbolizing the end of the Cold War and the reunification of Germany. The Berlin Wall, which had divided East and West Berlin since 1961, was opened following mounting public pressure and changes in East Germany's political leadership.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">The Moon Landing</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">July 20, 1969</h6>
+                            <p class="card-text">Neil Armstrong became the first human to set foot on the Moon, marking a milestone in human achievement and space exploration. The Apollo 11 mission fulfilled President Kennedy's goal of landing a man on the Moon before the end of the 1960s.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Figures Section -->
+    <section id="figures" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">Influential Historical Figures</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://images.unsplash.com/photo-1583585635793-0e1894c169bd" class="card-img-top" alt="Leonardo da Vinci">
+                        <div class="card-body">
+                            <h5 class="card-title">Leonardo da Vinci</h5>
+                            <p class="card-text">Italian polymath of the Renaissance, whose areas of interest included invention, drawing, painting, sculpture, architecture, science, music, mathematics, engineering, literature, anatomy, geology, astronomy, botany, and cartography.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a" class="card-img-top" alt="Marie Curie">
                         <div class="card-body">
                             <h5 class="card-title">Marie Curie</h5>
                             <p class="card-text">Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity. She was the first woman to win a Nobel Prize and remains the only person to win Nobel Prizes in multiple scientific fields.</p>
