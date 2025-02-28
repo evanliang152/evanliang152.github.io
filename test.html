@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political Systems and Structures</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+    	/* ---- reset ---- */
+
+
+/* ---- tsparticles container ---- */
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+
+    
+    
+    
+    
+    
+    
+    
+        /* General Styles */
+        :root {
+            --timeline-line-color: var(--bs-info);
+            --navbar-height: 56px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: var(--navbar-height);
+        }
+
+        /* Bullet Lists instead of list-group */
+        .bullet-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.5rem;
+            color: var(--bs-body-color);
+        }
+
+        /* Section Image Styles */
+        section img {
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        section img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Specific section image sizing */
+        #senate img, #house img, #checks img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            position: sticky
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            padding-top: calc(var(--navbar-height) + 4rem);
+            padding-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://evanliang152.github.io/us.jpg?auto=format&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            /* Removed fixed attachment for better mobile performance */
+            color: white;
+            will-change: transform; /* Optimize for GPU acceleration */
+        }
+
+        .hero-section .container {
+            width: 100%;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--timeline-line-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            margin: 2rem 0;
+            width: 50%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 30px;
+            padding-right: 0;
+            margin-left: 50%;
+        }
+
+        .timeline-img {
+            width: 100%;
+            max-width: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-img:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .timeline-content {
+            background: var(--bs-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Artifact Cards */
+        .artifact-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .artifact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .artifact-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Section Styles */
+        section {
+            scroll-margin-top: var(--navbar-height);
+        }
+
+        #events .card, 
+        #civilizations .card,
+        #about .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #events .card:hover, 
+        #civilizations .card:hover,
+        #about .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #maps .card {
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        #maps .card:hover {
+            transform: scale(1.02);
+        }
+
+        #maps .card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+        #maps .card:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 30px;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+
+            #civilizations .img-fluid {
+                height: 150px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><i class="fas fa-landmark me-2"></i>Political Systems and Structures</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#senate">Senate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#house">House of Representatives</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#powers">Powers of Congress</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#checks">Checks and Balances</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#media">Media's Role</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div id="particles-js"></div>
+        <div class="container h-100 hero-content">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 mb-4"><br><br>Political Systems and Structures</h1>
+                    <p class="lead">Analyzing the Senate and House of Representatives, powers of Congress, media's role in the Democratic Processes, and the checks and balances of the United States government</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+<!-- tsParticles container -->
+<web-particles id="tsparticles" options='{"fps_limit":60,"interactivity":{"detectsOn":"canvas","events":{"onClick":{"enable":true,"mode":"push"},"onHover":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"push":{"particles_nb":4},"repulse":{"distance":200,"duration":0.4}}},"particles":{"color":{"value":"#ffffff"},"links":{"color":"#ffffff","distance":150,"enable":true,"opacity":0.4,"width":1},"move":{"bounce":false,"direction":"none","enable":true,"outMode":"out","random":false,"speed":2,"straight":false},"number":{"density":{"enable":true,"area":800},"value":80},"opacity":{"value":0.5},"shape":{"type":"circle"},"size":{"random":true,"value":5}},"detectRetina":true}'></web-particles>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.28.0/dist/tsparticles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.5.0/custom-elements-es5-adapter.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.5.0/webcomponents-loader.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/web-particles@1.1.0/dist/web-particles.min.js"></script>
+
+    <!-- Senate Section -->
+    <section id="senate" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">The Senate</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Structure and Composition</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>100 members, 2 per state - historic aspects of New Jersey Plan</li>
+                                <li>6 year terms, ⅓ of members elected every 2 years</li>
+                                <li>Must be at least 30 years old, citizen for 9 years and live in the state they represent</li>
+                                <li>Filibuster allowed - procedural rule requiring 60 votes to end debate</li>
+                            </ul>
+
+                            <h4 class="card-title">Special Powers</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>Carry out impeachment trial after Representatives have impeached the president</li>
+                                <li>Choose Vice President if there is no Electoral College winner</li>
+                                <li>Ratify Treaties</li>
+                                <li>Less committee-based, more bipartisanship, consensus and consent</li>
+                            </ul>
+
+                            <h4 class="card-title">Constitutional Changes</h4>
+                            <p class="card-text">17th Amendment (1913) - Established direct election of senators by popular vote. Previously, senators were chosen by state legislatures.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <img src="https://evanliang152.github.io/senate.png?auto=format&fit=resize&w=800&q=80" alt="US Senate Chamber" class="img-fluid rounded shadow" width="100%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="https://evanliang152.github.io/senate3.jpg?auto=format&fit=resize&w=800&q=80" alt="US Senators in Session" class="img-fluid rounded shadow" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- House of Representatives Section -->
+    <section id="house" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">House of Representatives</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Structure and Composition</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>435 members, proportional representation - historically derived from Virginia Plan</li>
+                                <li>Each member represents approximately 760,000 constituents</li>
+                                <li>Must be at least 25 years old and live in the state of their district</li>
+                                <li>Led by the Speaker of the House</li>
+                            </ul>
+
+                            <h4 class="card-title">Special Powers</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>Write impeachment cases against federal officials</li>
+                                <li>Choose President if no winner in Electoral College</li>
+                                <li>All revenue bills must originate in the House</li>
+                            </ul>
+
+                            <h4 class="card-title">Operating Style</h4>
+                            <p class="card-text">Committee-based structure, more partisan, majority rules, with formal rules and decorum emphasized.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <img src="https://evanliang152.github.io/house.png?auto=format&fit=crop&w=800&q=80" alt="House of Representatives Chamber" class="img-fluid rounded shadow" width="100%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="https://evanliang152.github.io/house3.jpg?auto=format&fit=crop&w=800&q=80" alt="House Session" class="img-fluid rounded shadow" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Powers of Congress Section -->
+    <section id="powers" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">Powers of Congress</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://evanliang152.github.io/law.jpg?auto=format&fit=crop&w=800&q=80" alt="Legislative Power" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Legislative Powers</h5>
+                            <ul class="bullet-list">
+                                <li>Write and pass legislation</li>
+                                <li>Necessary and Proper Clause</li>
+                                <li>Override presidential vetoes with 2/3 majority</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://evanliang152.github.io/money.png?auto=format&fit=crop&w=800&q=80" alt="Financial Power" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Powers</h5>
+                            <ul class="bullet-list">
+                                <li>Lay and collect taxes</li>
+                                <li>Borrow money</li>
+                                <li>Commerce Clause</li>
+                                <li>Coin money and regulate its value</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card artifact-card">
+                        <img src="https://evanliang152.github.io/congress.jpg?auto=format&fit=crop&w=800&q=80" alt="War Powers" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Other Powers</h5>
+                            <ul class="bullet-list">
+                                <li>Declare War</li>
+                                <li>Raise and maintain military forces</li>
+                                <li>Immigration and Naturalization</li>
+                                <li>Control over District of Columbia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checks and Balances Section -->
+    <section id="checks" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Checks and Balances</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Executive Branch Checks</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>President can veto legislation</li>
+                                <li>President appoints Supreme Court justices</li>
+                                <li>President serves as Commander-in-Chief</li>
+                            </ul>
+
+                            <h4 class="card-title">Legislative Branch Checks</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>Congress can impeach the president</li>
+                                <li>Congress approves federal judges</li>
+                                <li>Senate confirms presidential appointments</li>
+                                <li>Congress can override presidential vetoes</li>
+                            </ul>
+
+                            <h4 class="card-title">Judicial Branch Checks</h4>
+                            <ul class="bullet-list mb-4">
+                                <li>Supreme Court interprets laws</li>
+                                <li>Supreme Court can declare laws unconstitutional</li>
+                                <li>Judicial review established in Marbury v. Madison</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <img src="https://evanliang152.github.io/checks.png?auto=format&fit=resize&w=800&q=80" alt="Checks and Balances" class="img-fluid rounded shadow" width="100%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="https://evanliang152.github.io/checks3.png?auto=format&fit=resize&w=800&q=80" alt="Three Branches of Government" class="img-fluid rounded shadow" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media's Role Section -->
+    <section id="media" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">Media's Role in Democratic Processes</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80" alt="Media Influence" class="card-img-top">
+                        <div class="card-body">
+                            <h4 class="card-title">Media Influence</h4>
+                            <p class="card-text">Media significantly influences public opinion, presenting information either with full context or through selective clips. The case of Rep. Marjorie Taylor Greene demonstrates how media coverage can shape public perception of political figures.</p>
+                            <p class="card-text">Media platforms can be leveraged to mobilize constituents around specific issues or amplify politicians' messages to broader audiences.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=800&q=80" alt="Incumbency Advantage" class="card-img-top">
+                        <div class="card-body">
+                            <h4 class="card-title">Incumbency Advantage</h4>
+                            <p class="card-text">Current elected officials often benefit from established media relationships and coverage, contributing to the "incumbency effect" that makes it easier for sitting officials to retain their positions.</p>
+                            <p class="card-text">Media coverage can create name recognition and familiarity, which are significant factors in electoral success.</p>
+                            </web-particles>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS.load('particles-js', 'js/particles.json', function() {
+                console.log('particles.js loaded - callback');
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const hrefAttr = this.getAttribute('href');
+                    if (hrefAttr === '#') return; // Skip empty href
+
+                    // Fix for invalid selector
+                    if (hrefAttr && hrefAttr !== '#') {
+                        const target = document.querySelector(hrefAttr);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Use more efficient animation approach with debounced scroll handling
+            const animatedElements = [
+                '.timeline-item',
+                '.artifact-card',
+                '#events .card',
+                '#figures .card',
+                '#civilizations .card',
+                '#maps .card',
+                '#about .card'
+            ];
+
+            // Optimize observer by batching elements
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '100px'  // Increased margin for earlier loading
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Use requestAnimationFrame for smoother animations
+                        requestAnimationFrame(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize all elements to be animated at once
+            animatedElements.forEach(selector => {
+                document.querySelectorAll(selector).forEach(element => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    element.style.transition = 'all 0.3s ease-out';  // Reduced transition time
+                    observer.observe(element);
+                });
+            });
+
+            // Debounce scroll events to reduce performance impact
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                if (scrollTimeout) {
+                    window.cancelAnimationFrame(scrollTimeout);
+                }
+
+                scrollTimeout = window.requestAnimationFrame(() => {
+                    const sections = document.querySelectorAll('section');
+                    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+                    let current = '';
+
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        // Use more efficient viewport checking
+                        if (rect.top <= 100 && rect.top + rect.height > 0) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${current}`) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                });
+            }, { passive: true });  // Mark event as passive for better scrolling performance
+        });
+
+    </script>
+</body>
+</html>
