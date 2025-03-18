@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #343a40; /* Dark background for consistency with theme */
+        }
+        .qrcode {
+            max-width: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=placeholder" alt="QR Code" class="qrcode">
+</body>
+</html>
